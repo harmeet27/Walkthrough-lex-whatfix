@@ -581,6 +581,7 @@ header ul.nav li ul li.dropdown-submenu li a {
 }
 #featured.bg {
 	background: url(../img/dummies/feat-bg.jpg) no-repeat top center;
+	background:white;
 }
 
 /* ===================================

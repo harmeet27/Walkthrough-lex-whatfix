@@ -1,0 +1,268 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="Ideal/css/chatbotcss.css"/>
+<script src="https://sdk.amazonaws.com/js/aws-sdk-2.41.0.min.js"></script>
+
+
+<title>
+hey hi hello
+</title>
+<style language="text/css">
+		input#wisdom {
+			padding: 4px;
+			font-size: 1em;
+			width: 400px
+		}
+
+		input::placeholder {
+			color: #ccc;
+			font-style: italic;
+		}
+
+		p.userRequest {
+			margin: 4px;
+			padding: 4px 10px 4px 10px;
+			border-radius: 4px;
+			min-width: 50%;
+			max-width: 85%;
+			float: left;
+			background-color: #7d7;
+		}
+
+		p.lexResponse {
+			margin: 4px;
+			padding: 4px 10px 4px 10px;
+			border-radius: 4px;
+			text-align: right;
+			min-width: 50%;
+			max-width: 85%;
+			float: right;
+			background-color: #bbf;
+			font-style: italic;
+		}
+
+		p.lexError {
+			margin: 4px;
+			padding: 4px 10px 4px 10px;
+			border-radius: 4px;
+			text-align: right;
+			min-width: 50%;
+			max-width: 85%;
+			float: right;
+			background-color: #f77;
+		}
+	</style>
+</head>
+<body>
+<div class="container text-center">
+    <div class="row">
+		<div class="round hollow text-center">
+        <a href="#" class="open-btn" id="addClass"><i class="fa fa-angle-double-down" aria-hidden="true"></i> Genie</a>
+        </div>
+        </div>
+</div>
+
+
+<aside id="sidebar_secondary" class="tabbed_sidebar ng-scope chat_sidebar">
+
+<div class="popup-head">
+    			<div class="popup-head-left pull-left"><a Design and Developmenta title="DBS Genie" target="_blank">
+<img class="md-user-image" alt"Genie" title="DBS Genie" src="genieimg.jpg" title="DBS Genie" alt="DBS Genie">
+<h1>DBS Genie</h1><small><br> <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> Help</small></a></div>
+					  <div class="popup-head-right pull-right">
+						</div>
+						<button data-widget="remove" id="removeClass" class="chat-header-button pull-right" type="button"><i class="glyphicon glyphicon-remove"></i></button>
+                      </div>
+			  </div>
+
+<div id="conversation" class="chat_box_wrapper chat_box_small chat_box_active" style="opacity: 1; display: block; transform: translateX(0px);">
+
+	<!--<div id="conversation" style="width: 400px; height: 400px; border: 1px solid #ccc; background-color: #eee; padding: 4px; overflow: scroll"></div>-->
+	<!--<form id="chatform" style="margin-top: 10px" onsubmit="return pushChat();">
+		<input type="text" id="wisdom" size="80" value="" placeholder="Ask me a Question">
+	</form>-->
+	
+	
+
+
+
+
+
+
+
+</div>
+<div class="chat_submit_box">
+    <div class="uk-input-group">
+        <div class="gurdeep-chat-box">
+        
+        <form id="chatform" style="margin-top: 10px" onsubmit="return pushChat();">
+		<input type="text" placeholder="Ask me a Question" id="wisdom" name="submit_message" class="md-input">
+        
+	</form>
+	
+        </div>
+    </div>
+</div>
+        
+</div>
+</body>
+
+<script type="text/javascript">
+		// set the focus to the input box
+		document.getElementById("wisdom").focus();
+
+		// Initialize the Amazon Cognito credentials provider
+		//AWS.config.region = 'us-east-1'; // Region
+		//AWS.config.accessKeyId = "AKIAJSIC3FAHUQ3FX5OA";
+		//AWS.config.secretAccessKey = "5ZjpU6AYie1kMD7sjXBXeSZGX+n7GgWMQWqq9JWE";
+		//AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+		// Provide your Pool Id here
+		//	IdentityPoolId: 'us-east-1_cM6aHPrqW',
+			//userId: 'harmeet',sss
+			//password: 'Marvel@123',
+		//});
+
+		//var lexruntime = new AWS.LexRuntime();
+		
+		var lexruntime = new AWS.LexRuntime({region: 'us-east-1',
+		credentials: new AWS.Credentials('AKIAJSIC3FAHUQ3FX5OA', '5ZjpU6AYie1kMD7sjXBXeSZGX+n7GgWMQWqq9JWE', null)
+		});
+		
+		//var lexUserId = 'chatbot-demo' + Date.now();
+		var lexUserId = 'harmeet';
+		var sessionAttributes = {};
+
+		function pushChat() {
+
+			// if there is text to be sent...
+			var wisdomText = document.getElementById('wisdom');
+			if (wisdomText && wisdomText.value && wisdomText.value.trim().length > 0) {
+
+				// disable input to show we're sending it
+				var wisdom = wisdomText.value.trim();
+				wisdomText.accessKey = 'AKIAJSIC3FAHUQ3FX5OA';
+				//wisdomText.value = '...';
+				wisdomText.locked = true;
+
+				// send it to the Lex runtime
+				var params = {
+					botAlias: '$LATEST',
+					botName: 'DbsIdeal',
+					inputText: wisdom,
+					userId: lexUserId,
+					sessionAttributes: sessionAttributes
+				};
+				showRequest(wisdom);
+				lexruntime.postText(params, function(err, data) {
+					if (err) {
+						console.log(err, err.stack);
+						showError('Error:  ' + err.message + ' (see console for details)')
+					}
+					if (data) {
+						// capture the sessionAttributes for the next cycle
+						sessionAttributes = data.sessionAttributes;
+						// show response and/or error/dialog status
+						showResponse(data);
+					}
+					// re-enable input
+					wisdomText.value = '';
+					wisdomText.locked = false;
+				});
+			}
+			// we always cancel form submission
+			return false;
+		}
+
+		function showRequest(daText) {
+
+			var conversationDiv = document.getElementById('conversation');
+			var requestPara = document.createElement("P");
+			requestPara.className = 'userRequest';
+			requestPara.appendChild(document.createTextNode(daText));
+			conversationDiv.appendChild(requestPara);
+			conversationDiv.scrollTop = conversationDiv.scrollHeight;
+		}
+
+		function showError(daText) {
+
+			var conversationDiv = document.getElementById('conversation');
+			var errorPara = document.createElement("P");
+			errorPara.className = 'lexError';
+			errorPara.appendChild(document.createTextNode(daText));
+			conversationDiv.appendChild(errorPara);
+			conversationDiv.scrollTop = conversationDiv.scrollHeight;
+		}
+
+		function showResponse(lexResponse) {
+            console.log(lexResponse,"TTTT");
+            var conversationDiv = document.getElementById('conversation');
+            var responsePara = document.createElement("P");
+            responsePara.className = 'lexResponse';
+            if (lexResponse.message) {
+                responsePara.appendChild(document.createTextNode(lexResponse.message));
+               }
+            if (lexResponse.dialogState === 'ReadyForFulfillment') {
+                responsePara.appendChild(document.createTextNode(
+				
+                    'Ready for fulfillment'));
+					
+                // TODO:  show slot values
+				
+				
+            } 
+			else if(lexResponse.dialogState === 'Fulfilled')
+				{
+				//callWindow(responsePara.innerHTML);
+				if(lexResponse.intentName =='Walkthrough'){
+				window.parent._wfx_flow='6f14bac0-2a06-11e8-ba49-82ae84f41eba'; 
+				window.parent._wfx_live && window.parent._wfx_live();
+				}
+				else if (lexResponse.intentName == 'Balances')
+					{
+					window.parent._wfx_flow='58765870-3cdd-11e8-bf92-04013d24cd02'; 
+					window.parent._wfx_live && window.parent._wfx_live();
+					}
+				else if (lexResponse.intentName == 'FixedDeposits')
+				{
+				window.parent._wfx_flow='adedd300-3ce2-11e8-8495-04013d24cf02'; 
+				window.parent._wfx_live && window.parent._wfx_live();
+				}
+				else if (lexResponse.intentName == 'Logout')
+				{
+				window.parent._wfx_flow='6fe24530-3ce4-11e8-bf92-04013d24cd02'; 
+				window.parent._wfx_live && window.parent._wfx_live();
+				}
+				}
+            
+			
+			else {
+//                responsePara.appendChild(document.createTextNode(
+//                    '(' + lexResponse.dialogState + ')'));
+            }
+			
+			
+			
+            conversationDiv.appendChild(responsePara);
+            
+			conversationDiv.scrollTop = conversationDiv.scrollHeight;
+            if(lexResponse.dialogState === 'ElicitSlot') {
+                
+            }
+        }
+		
+$(function(){
+$("#addClass").click(function () {
+  $('#sidebar_secondary').addClass('popup-box-on');
+    });
+  
+    $("#removeClass").click(function () {
+  $('#sidebar_secondary').removeClass('popup-box-on');
+    });
+})
+</script>
+</html>

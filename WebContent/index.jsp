@@ -40,7 +40,7 @@
 						</div>
 						<div class="col-md-6">
 							<div id="sb-search" class="sb-search">
-								Signed in as Harmeet | Ideal Main | Logout
+								Signed in as Harmeet | Ideal Main | <a href="login.jsp">Logout</a>
 
 								
 							</div>
@@ -164,7 +164,7 @@
 						</div>
 						<div class="row">
 
-							<div class="col-sm-7 col-md-7">
+							<div class="col-sm-5 col-md-5">
 								<div class="testimonialslide clearfix flexslider">
 									<table class="table table-bordered">
 										<thead>
@@ -277,7 +277,7 @@
 									</table>
 								</div>
 							</div>
-							<div class="col-sm-4 col-lg-4">
+							<div class="col-sm-3 col-lg-3">
 								<div class="card">
 									<ul class="list-group list-group-flush">
 										<li class="list-group-item">
@@ -330,7 +330,7 @@
 															</div>
 														</div>
 													</form>
-													<a href="#" class="btn btn-danger">Search</a>
+													<a href="#" class="btn btn-danger" onclick="window._wfx_flow='651167e0-3cca-11e8-94d6-04013d24cc02'; window._wfx_live && window._wfx_live();">Search</a>
 
 												</div>
 												<div class="tab-pane" id="two">
@@ -411,6 +411,9 @@
 
 								</div>
 							</div>
+							<div class="col-sm-4 col-lg-4">
+							<iframe src = "chatbothtml.html" align="right" height="500px" width="380px" margin-top="100px"></iframe>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -449,9 +452,11 @@
 		</div>
 		
 	</footer>
+	 
 	</div>
 	<a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
-
+	
+	
 	<!-- Placed at the end of the document so the pages load faster -->
 	<script src="Ideal/js/jquery.min.js"></script>
 	<script src="Ideal/js/modernizr.custom.js"></script>
@@ -475,7 +480,9 @@
 				location.href=event.target.id+".jsp";
 					}
 		</script>
+   
 
 </body>
-
+<script language='javascript' async='true' type='text/javascript' 
+   src='//whatfix.com/6d32ac20-2075-11e8-823e-04013d24cd02/embed/embed.nocache.js'></script>
 </html>

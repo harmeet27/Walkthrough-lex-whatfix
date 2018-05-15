@@ -48,7 +48,7 @@
 						</div>
 						<div class="col-md-6">
 							<div id="sb-search" class="sb-search">
-								Signed in as Harmeet  | Ideal Main | Logout
+								Signed in as Harmeet  | Ideal Main | <a href="login.jsp">Logout</a>
 
 								<!--<form>
 									<input class="sb-search-input" placeholder="Enter your search term..." type="text" value="" name="search" id="search">
@@ -171,7 +171,7 @@
 
 			<div class="container">
 				<div class="row">
-					<div class="col-lg-12">
+					<div class="col-lg-8">
 						<div class="text-left">
 							<p>
 							<h4>Balances</h4>
@@ -294,6 +294,9 @@
 						</table>
 
 					</div>
+					<div>
+	<iframe src = "chatbothtml.html" align="right" height="500px" width="380px" margin-top="100px"><p>x</p></iframe>
+	</div>
 				</div>
 			</div>
 	</div>
@@ -331,6 +334,7 @@
 		
 	</footer>
 	</div>
+	
 	<a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
 
 	<!-- Placed at the end of the document so the pages load faster -->
@@ -354,7 +358,8 @@
 					}
 
 </script>
-
+<script language='javascript' async='true' type='text/javascript' 
+   src='//whatfix.com/6d32ac20-2075-11e8-823e-04013d24cd02/embed/embed.nocache.js'></script>
 </body>
 
 </html>

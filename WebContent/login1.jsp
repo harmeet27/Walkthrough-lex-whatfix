@@ -10,6 +10,13 @@
 	<link href="Ideal/css/bootstrap.min.css" rel="stylesheet" />
 	<link href="Ideal/css/cubeportfolio.min.css" rel="stylesheet" />
 	<link href="Ideal/css/style.css" rel="stylesheet" />
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="chatbotcss.css"/>
+<script src="https://sdk.amazonaws.com/js/aws-sdk-2.41.0.min.js"></script>
 
 
 	<!-- Theme skin -->
@@ -44,7 +51,7 @@
 			<div class="container">
 
 				<div class="row">
-					<div class="col-xs-4 col-md-4 col-sm-offset-2">
+					<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
 						<form name="loginform" role="form" class="register-form"  onsubmit="return validateForm()">
 								<img src="Ideal/img/logodbs.png" alt="" width="199" height="52" />
 							<hr >
@@ -75,16 +82,38 @@
 						
 						
 						
+						
+						
+						
+
+    						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
 					</div>
-				
-				<div class="<div class="col-xs-6 col-md-6">
-				<iframe src = "chatbothtml.html" align="right" height="500px" width="500px" margin-top=100px"><p>x</p></iframe>
 				</div>
-				</div>
+
 			</div>	
 			
+					
 			
 		</section>
+
+		
+
+	<!--<a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>-->
 	</div>
 	<!-- javascript
     ================================================== -->
